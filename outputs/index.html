@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#07111f">
+  <meta name="theme-color" content="#06111f">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="筋トレMEMO">
   <title>筋トレMEMO</title>
@@ -13,7 +13,7 @@
 <body>
   <div id="app" class="app-shell">
     <header class="topbar">
-      <div>
+      <div class="topbar-title">
         <p class="eyebrow" id="todayLabel"></p>
         <h1 id="screenTitle">ホーム</h1>
       </div>
@@ -23,11 +23,12 @@
     <main id="view" class="view" tabindex="-1"></main>
 
     <nav class="tabbar" aria-label="メインナビゲーション">
-      <button class="tab is-active" data-route="home" type="button"><span>⌂</span>ホーム</button>
-      <button class="tab" data-route="history" type="button"><span>▥</span>履歴/分析</button>
-      <button class="tab" data-route="wellness" type="button"><span>◉</span>体重/睡眠</button>
-      <button class="tab" data-route="calendar" type="button"><span>□</span>カレンダー</button>
-      <button class="tab" data-route="menus" type="button"><span>☰</span>メニュー</button>
+      <button class="tab is-active" data-route="home" type="button"><span>⌂</span><b>ホーム</b></button>
+      <button class="tab" data-route="history" type="button"><span>▤</span><b>履歴</b></button>
+      <button class="tab tab-plus" data-route="record" type="button" aria-label="トレーニングを記録"><span>+</span><b>記録</b></button>
+      <button class="tab" data-route="wellness" type="button"><span>◌</span><b>体重</b></button>
+      <button class="tab" data-route="calendar" type="button"><span>□</span><b>予定</b></button>
+      <button class="tab" data-route="menus" type="button"><span>☰</span><b>メニュー</b></button>
     </nav>
   </div>
 
