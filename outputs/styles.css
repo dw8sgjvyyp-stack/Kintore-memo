@@ -349,6 +349,42 @@ button, input, select, textarea, canvas { max-width: 100%; }
 .accordion-body { padding: 0 10px 10px; display: grid; gap: 7px; }
 .accordion-body.grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .accordion-body .ghost { grid-column: 1 / -1; min-height: 34px; }
+.set-presets {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.set-presets button {
+  flex: 1 1 86px;
+  min-height: 34px;
+  padding: 0 8px;
+  font-size: 11px;
+}
+.set-presets .is-active {
+  border-color: rgba(255,45,53,.36);
+  background: rgba(255,45,53,.09);
+}
+.set-editor-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(58px, .72fr);
+  align-items: end;
+}
+.set-editor-grid .field span { font-size: 10px; }
+.set-actions {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 76px;
+  gap: 6px;
+}
+.set-actions .ghost,
+.set-actions .danger {
+  min-height: 34px;
+  padding: 0 10px;
+}
+.add-set-button {
+  width: 100%;
+  min-height: 38px;
+}
 
 .chart {
   width: 100%;
