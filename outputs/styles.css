@@ -326,6 +326,57 @@ button, input, select, textarea, canvas { max-width: 100%; }
   padding-top: 8px;
   border-top: 1px solid var(--line);
 }
+.two-tabs {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 8px;
+}
+.wellness-entry {
+  display: grid;
+  gap: 9px;
+}
+.unit-input {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+.unit-input b {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 820;
+}
+.wellness-number {
+  min-height: 48px;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+}
+.sleep-total {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  min-height: 46px;
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: rgba(255,255,255,.035);
+}
+.sleep-total span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 780;
+}
+.sleep-total strong {
+  font-size: 18px;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.compact-history .row {
+  min-height: 44px;
+  padding: 8px;
+}
 
 .primary, .secondary, .danger, .ghost {
   min-height: 38px;
