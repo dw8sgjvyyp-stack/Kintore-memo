@@ -439,6 +439,14 @@ button, input, select, textarea, canvas { max-width: 100%; }
 .history-metrics {
   align-items: start;
 }
+.history-exercise-tabs {
+  margin: 8px 0;
+}
+.history-exercise-tabs .is-active {
+  border-color: rgba(255,45,53,.36);
+  background: rgba(255,45,53,.12);
+  color: var(--text);
+}
 
 .primary, .secondary, .danger, .ghost {
   min-height: 38px;
