@@ -447,6 +447,37 @@ button, input, select, textarea, canvas { max-width: 100%; }
   background: rgba(255,45,53,.12);
   color: var(--text);
 }
+.analytics-dashboard {
+  gap: 10px;
+}
+.analytics-range {
+  margin-top: 8px;
+}
+.analytics-bars {
+  display: grid;
+  gap: 8px;
+}
+.analytics-bar-row {
+  display: grid;
+  gap: 5px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.032);
+}
+.analytics-bar-row > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.analytics-bar-row > span {
+  display: block;
+  height: 7px;
+  min-width: 4px;
+  max-width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--red), var(--green));
+}
 
 .primary, .secondary, .danger, .ghost {
   min-height: 38px;
