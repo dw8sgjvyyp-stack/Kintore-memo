@@ -1217,6 +1217,13 @@ body {
   font-size: 17px;
   line-height: 1.25;
 }
+.resume-card {
+  border-color: rgba(239, 68, 68, .28);
+  background: linear-gradient(180deg, rgba(22,32,51,.98), rgba(17,28,45,.98));
+}
+.resume-card .button-row {
+  margin-top: 10px;
+}
 .menu-tabs {
   padding: 3px;
   border: 1px solid var(--line);
