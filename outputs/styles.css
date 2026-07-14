@@ -1224,6 +1224,20 @@ body {
 .resume-card .button-row {
   margin-top: 10px;
 }
+.cross-day-note {
+  margin: 8px 0 0;
+  padding: 8px;
+  border: 1px solid rgba(239, 68, 68, .24);
+  border-radius: 12px;
+  background: rgba(239, 68, 68, .08);
+  color: #fecaca;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.cross-day-card {
+  border-color: rgba(239, 68, 68, .28);
+  background: linear-gradient(180deg, rgba(42,28,37,.95), rgba(17,28,45,.95));
+}
 .menu-tabs {
   padding: 3px;
   border: 1px solid var(--line);
