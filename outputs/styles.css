@@ -1238,6 +1238,34 @@ body {
   border-color: rgba(239, 68, 68, .28);
   background: linear-gradient(180deg, rgba(42,28,37,.95), rgba(17,28,45,.95));
 }
+.body-part-tabs {
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.035);
+}
+.body-part-tabs button {
+  min-height: 32px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 820;
+}
+.body-part-tabs button.is-active {
+  color: white;
+  border-color: rgba(239,68,68,.36);
+  background: rgba(239,68,68,.18);
+}
+.exercise-catalog-card {
+  display: grid;
+  gap: 8px;
+  padding: 9px;
+}
+.compact-catalog {
+  max-height: min(34vh, 280px);
+}
 .menu-tabs {
   padding: 3px;
   border: 1px solid var(--line);
