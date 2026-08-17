@@ -5,6 +5,7 @@
   "description": "筋トレMEMO Pro PWA",
   "scripts": {
     "build": "node scripts/build.js",
+    "test": "node scripts/regression-check.js",
     "start": "node scripts/serve.js",
     "vercel-build": "node scripts/build.js"
   },
