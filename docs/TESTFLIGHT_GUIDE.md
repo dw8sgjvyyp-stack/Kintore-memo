@@ -2,7 +2,7 @@
 
 最終更新日: 2026-08-30
 
-この文書は、筋トレMEMOをTestFlightで確認するための準備ガイドです。今回はTestFlight公開やApp Store ConnectへのUploadは実行しません。
+この文書は、Muscle MemoをTestFlightで確認するための準備ガイドです。今回はTestFlight公開やApp Store ConnectへのUploadは実行しません。
 
 ## 1. 前提
 

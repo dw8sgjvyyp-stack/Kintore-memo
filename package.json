@@ -2,7 +2,7 @@
   "name": "kintore-memo-pro",
   "version": "1.0.0",
   "private": true,
-  "description": "筋トレMEMO Pro PWA",
+  "description": "Muscle Memo Pro PWA",
   "scripts": {
     "build": "node scripts/build.js",
     "test": "node scripts/regression-check.js",

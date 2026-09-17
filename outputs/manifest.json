@@ -1,6 +1,6 @@
 {
-  "name": "筋トレMEMO",
-  "short_name": "筋トレMEMO",
+  "name": "Muscle Memo",
+  "short_name": "Muscle Memo",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#06111f",

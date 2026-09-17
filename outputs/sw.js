@@ -1,4 +1,4 @@
-const CACHE_NAME = "kintore-memo-v4-pro";
+const CACHE_NAME = "kintore-memo-v6-pro";
 const ASSETS = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.json", "./icon.svg"];
 
 self.addEventListener("install", event => {

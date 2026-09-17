@@ -2,7 +2,7 @@
 
 最終更新日: 2026-08-30
 
-この文書は、筋トレMEMOをApp Store Connectへ登録し、TestFlightまたはApp Reviewへ進める前の確認項目です。今回はArchiveとUploadの手順整理までで、実際のUploadや審査提出は行いません。
+この文書は、Muscle MemoをApp Store Connectへ登録し、TestFlightまたはApp Reviewへ進める前の確認項目です。今回はArchiveとUploadの手順整理までで、実際のUploadや審査提出は行いません。
 
 ## 1. Apple Developer Program
 
@@ -14,7 +14,7 @@
 ## 2. App Store Connect 新規App作成
 
 - Platform: iOS
-- App Name: 筋トレMEMO
+- App Name: Muscle Memo
 - Primary Language: Japanese
 - Bundle ID: com.sion.kintorememo
 - SKU: 任意の一意な管理用IDを設定する
@@ -22,7 +22,7 @@
 
 ## 3. Xcode / iOSビルド設定
 
-- Display Name: 筋トレMEMO
+- Display Name: Muscle Memo
 - Bundle Identifier: com.sion.kintorememo
 - Version: 1.0.0
 - Build: 1
