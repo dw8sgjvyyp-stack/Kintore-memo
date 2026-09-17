@@ -66,6 +66,18 @@ assert(app.includes("activeWorkoutSession"), "active workout session support is 
 assert(app.includes("recordDrafts[ex.sessionExerciseId]"), "record drafts remain keyed by session exercise id");
 assert(app.includes("sets,"), "saved workout objects keep a sets field");
 assert(app.includes("draftSetsToSavedSets"), "workout sets are still normalized before save");
+assert(app.includes('data-action="open-create-routine"'), "home and menu management expose routine creation");
+assert(app.includes('data-action="save-current-as-routine"'), "today-only workouts can optionally be saved as routines");
+assert(app.includes('data-action="save-completed-as-routine"'), "completed workouts can optionally be saved as routines");
+assert(app.includes("function openRoutineBuilder") && app.includes("function saveRoutineDraft"), "routine creation flow supports exercise selection, ordering, and save");
+assert(app.includes("state.customMenus.push") && app.includes("state.templates.push"), "routine creation reuses existing menu and template storage");
+assert(app.includes('data-action="exercise-reorder-controls"') && app.includes('data-action="exercise-row-actions"'), "menu exercise rows expose one reorder control and one action menu");
+assert(index.includes('<svg viewBox="0 0 24 24">'), "bottom navigation uses consistent inline line icons");
+assert(app.includes('data-action="quick-sheet-adjust"') && app.includes('id="quickSetWeight"') && app.includes('id="quickSetReps"'), "set cells open the lightweight weight and reps editor");
+assert(app.includes("syncVisualViewport") && app.includes("--keyboard-inset"), "set input sheet accounts for the iOS visual viewport");
+assert(!app.includes('class="danger finish-workout-button"'), "workout finish action is no longer duplicated below the record controls");
+assert(!app.includes('data-mode="empty" type="button">空で開始'), "ambiguous empty-start control is removed from active workout rows");
+assert(app.includes('aria-label="セット${index}の重量"') && app.includes('aria-label="セット${index}の回数"'), "weight and reps cells are full accessible buttons");
 assert(app.includes("renderHistory") && app.includes("renderCalendarCard") && app.includes("renderAnalytics"), "history calendar analytics routes are bundled");
 assert(index.includes('data-route="history"'), "bottom history tab opens the history route");
 assert(!index.includes('data-route="calendar" type="button"><span>▤</span><b>履歴</b>'), "bottom history tab no longer uses the calendar route");

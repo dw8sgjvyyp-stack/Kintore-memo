@@ -15,19 +15,18 @@
     <header class="topbar">
       <div class="topbar-title">
         <p class="eyebrow" id="todayLabel"></p>
-        <h1 id="screenTitle">Home</h1>
+        <h1 id="screenTitle">ホーム</h1>
       </div>
-      <button class="ghost compact-control" data-action="open-settings" type="button">Settings</button>
-      <button id="quickAddBtn" class="icon-button" type="button" aria-label="種目を追加">+</button>
+      <button id="headerAction" class="icon-button header-action" data-action="open-settings" type="button" aria-label="設定を開く">&#9881;</button>
     </header>
 
     <main id="view" class="view" tabindex="-1"></main>
 
     <nav class="tabbar" aria-label="メインナビゲーション">
-      <button class="tab is-active" data-route="home" type="button"><span>⌂</span><b>Home</b></button>
-      <button class="tab" data-route="history" type="button"><span>▤</span><b>History</b></button>
-      <button class="tab" data-route="analytics" type="button"><span>▥</span><b>Stats</b></button>
-      <button class="tab" data-route="settings" type="button"><span>⚙</span><b>Settings</b></button>
+      <button class="tab is-active" data-route="home" type="button"><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5M9.5 20v-6h5v6"/></svg></span><b>ホーム</b></button>
+      <button class="tab" data-route="history" type="button"><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.5"/><path d="M4 4.5v4h4M12 8v4l3 2"/></svg></span><b>履歴</b></button>
+      <button class="tab" data-route="analytics" type="button"><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11h4v9M10 20V5h4v15M15 20v-7h4v7M3 20h18"/></svg></span><b>統計</b></button>
+      <button class="tab" data-route="settings" type="button"><span aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 13.5v-3l-2-.7-.7-1.6.9-1.9-2.1-2.1-1.9.9-1.7-.7L10.5 2h-3l-.7 2.4-1.6.7-1.9-.9-2.1 2.1.9 1.9-.7 1.6-2.4.7v3l2.4.7.7 1.6-.9 1.9 2.1 2.1 1.9-.9 1.6.7.7 2.4h3l.7-2.4 1.7-.7 1.9.9 2.1-2.1-.9-1.9.7-1.6z" transform="translate(2.25 0) scale(.81 1)"/></svg></span><b>設定</b></button>
     </nav>
   </div>
 
