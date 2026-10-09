@@ -2635,10 +2635,56 @@ body {
 }
 .create-exercise-link {
   width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
   text-align: left;
   border-bottom: 1px solid rgba(255,255,255,.06);
   padding: 7px 4px 10px;
 }
+.exercise-choice-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+}
+.exercise-choice-wrap.is-custom {
+  grid-template-columns: minmax(0, 1fr) 46px;
+  gap: 6px;
+}
+.exercise-choice-wrap .selectable-exercise {
+  min-width: 0;
+  min-height: 52px;
+}
+.custom-exercise-more {
+  width: 46px;
+  min-width: 46px;
+  min-height: 46px;
+  align-self: center;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 13px;
+  background: #142236;
+  color: var(--muted);
+  font-size: 20px;
+  touch-action: manipulation;
+}
+.custom-exercise-more:active { background: #1c2c43; color: var(--text); }
+.custom-exercise-help { margin: -4px 0 4px; }
+.custom-exercise-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  margin-left: 5px;
+  padding: 1px 6px;
+  border: 1px solid rgba(239,68,68,.35);
+  border-radius: 999px;
+  color: #fca5a5;
+  font-size: 10px;
+  font-weight: 800;
+  vertical-align: 1px;
+}
+.required-mark { color: var(--red); font-size: 11px; }
+.custom-favorite-row { min-height: 52px; }
 .sticky-sheet-actions { grid-template-columns: minmax(0, 1fr) 98px; }
 .sticky-sheet-actions .ghost { padding-inline: 7px; font-size: 11px; }
 .create-exercise-form { padding-bottom: 8px; }

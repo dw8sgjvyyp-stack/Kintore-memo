@@ -54,6 +54,11 @@ assert(app.includes("bodyPartCategories"), "bodyPart categories exist");
 assert(app.includes("trainingTypeCategories"), "trainingType categories exist");
 assert(app.includes("trainingType:"), "exercise templates carry trainingType");
 assert(app.includes("allExerciseTemplates"), "exercise pickers can use catalog plus saved templates");
+assert(app.includes('data-action="open-create-quick-exercise"') && app.includes('data-action="open-create-session-exercise"') && app.includes('data-action="open-create-menu-exercise"'), "quick start, workout, and menu pickers expose new custom exercise creation");
+assert(app.includes("function openCustomExerciseEditor") && app.includes("isCustom: true") && app.includes('source: "custom"'), "custom exercises reuse the existing exercise store with additive metadata");
+assert(app.includes("function openDeleteCustomExerciseConfirm") && app.includes("過去のワークアウト記録は削除・変更されません"), "custom exercise deletion requires confirmation and preserves workout history");
+assert(app.includes("function deleteCustomExercise") && app.includes("item.archived = true"), "custom exercise deletion archives catalog entries instead of rewriting workouts");
+assert(app.includes('data-action="custom-exercise-actions"'), "custom exercise rows expose edit favorite and delete actions");
 assert(app.includes("filter-sheet-exercise-type"), "exercise change sheet has training type filters");
 assert(app.includes("filter-session-exercise-type"), "exercise add sheet has training type filters");
 assert(app.includes("filter-menu-exercise-type"), "menu exercise catalog has training type filters");
@@ -71,6 +76,25 @@ assert(app.includes('data-action="save-current-as-routine"'), "today-only workou
 assert(app.includes('data-action="save-completed-as-routine"'), "completed workouts can optionally be saved as routines");
 assert(app.includes("function openRoutineBuilder") && app.includes("function saveRoutineDraft"), "routine creation flow supports exercise selection, ordering, and save");
 assert(app.includes("state.customMenus.push") && app.includes("state.templates.push"), "routine creation reuses existing menu and template storage");
+assert(app.includes("function exerciseSelectionCandidates") && app.includes("exerciseSelectionCandidates({ bodyPart, query, trainingType })"), "routine creation uses the shared selectable exercise catalog");
+assert(app.includes('filter-routine-exercise-type') && app.includes('activeTrainingType("filter-routine-exercise-type")'), "routine creation supports body-part and training-type filters");
+assert(app.includes("exerciseSelectionCandidates({ bodyPart, query, trainingType, excludeMenu: menu })"), "existing routine menu editing uses the shared selectable exercise catalog");
+assert(app.includes("...state.exercises.filter(ex => !ex.archived)"), "saved custom exercises are included while archived exercises are excluded before deduplication");
+assert(app.includes("customExerciseId: exercise.customExerciseId || \"\""), "saving a routine preserves custom exercise identity metadata");
+
+const routineCatalogFixture = [
+  { id: "standard", name: "ベンチプレス", bodyPart: "胸", trainingType: "Push", favorite: false, archived: false },
+  { id: "custom", name: "テスト種目", bodyPart: "背中", trainingType: "Pull", favorite: true, isCustom: true, archived: false },
+  { id: "archived", name: "削除済み種目", bodyPart: "背中", trainingType: "Pull", favorite: true, isCustom: true, archived: true }
+];
+const selectableFixture = routineCatalogFixture.filter(exercise => !exercise.archived);
+const customSearchFixture = selectableFixture.filter(exercise => `${exercise.name} ${exercise.bodyPart} ${exercise.trainingType}`.includes("テスト種目"));
+const customFilterFixture = selectableFixture.filter(exercise => exercise.bodyPart === "背中" && exercise.trainingType === "Pull");
+const savedRoutineFixture = customSearchFixture.map((exercise, order) => ({ menu: "テストルーティン", name: exercise.name, order }));
+assert(selectableFixture.some(exercise => exercise.name === "テスト種目"), "custom exercise appears in new routine candidates");
+assert(customSearchFixture.length === 1 && customSearchFixture[0].id === "custom", "custom exercise is searchable by name");
+assert(customFilterFixture.some(exercise => exercise.id === "custom") && !selectableFixture.some(exercise => exercise.id === "archived"), "custom exercise respects filters and archived custom exercises stay hidden");
+assert(savedRoutineFixture.some(exercise => exercise.menu === "テストルーティン" && exercise.name === "テスト種目"), "selected custom exercise can be saved into a routine and reopened from its menu");
 assert(app.includes('data-action="exercise-reorder-controls"') && app.includes('data-action="exercise-row-actions"'), "menu exercise rows expose one reorder control and one action menu");
 assert(index.includes('<svg viewBox="0 0 24 24">'), "bottom navigation uses consistent inline line icons");
 assert(app.includes('data-action="quick-sheet-adjust"') && app.includes('id="quickSetWeight"') && app.includes('id="quickSetReps"'), "set cells open the lightweight weight and reps editor");
