@@ -73,7 +73,7 @@ ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png
 - Privacy Policy: `docs/PRIVACY_POLICY.md` をWebページとして公開する
 - App Privacy: `docs/APP_STORE_PRIVACY.md` を見ながら回答する
 - Age Rating: `docs/AGE_RATING.md` を見ながら回答する
-- Firebase同期は任意機能として説明する
+- 初回リリースが端末内保存専用であることを説明する
 - 広告、トラッキング、HealthKit、Push通知、課金、Apple Sign Inは現在未使用
 
 ## 7. Screenshots
@@ -92,7 +92,7 @@ ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png
 
 注意:
 
-- 個人情報やFirebase設定JSONを映さない
+- 個人の記録やメモを映さない
 - デモデータ入りの状態で撮影する
 - iPhone Portraitで撮影する
 
@@ -100,7 +100,7 @@ ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png
 
 App Store Connectで暗号利用に関する質問に回答する。
 
-現状のアプリは、独自暗号、課金、HealthKit、ログインを実装していません。ただしFirebase同期を使う場合はHTTPS通信やApple標準の通信経路を利用するため、App Store Connectの質問に沿って最終判断してください。
+現状のアプリは、独自暗号、課金、HealthKit、ログイン、外部データ同期を実装していません。App Store Connectの質問に沿って最終判断してください。
 
 ## 9. Content Rights
 

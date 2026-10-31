@@ -1,76 +1,44 @@
 # App Store Privacy 申告用メモ
 
-最終更新日: 2026-08-30
+最終更新日: 2026-10-30
 
-この文書は、App Store ConnectのApp Privacy質問に回答するための整理メモです。最終申告では、公開時点の実装、Firebase同期の提供有無、Apple Developer Program上の設定を再確認してください。
+この文書は、Muscle MemoのApp Store初回リリースについて、App Store ConnectのApp Privacy質問に回答するための整理メモです。
 
 ## コード上の確認結果
 
-- 主な保存先は `localStorage` の `kintoreMemo.v2`
-- Firebase同期は任意で、設定JSONと有効化フラグがない場合は動作しない
-- Firebase同期を有効にした場合、Firestoreへ `{ state, updatedAt }` を保存する
-- 広告SDK、トラッキングSDK、アクセス解析SDKは確認できない
-- Capacitor 8.5.0を使用
-- Capacitor iOS / CapacitorCordova には `PrivacyInfo.xcprivacy` が含まれ、現状は収集データなし、トラッキングなしの内容
+- 保存先は端末内 `localStorage` の `kintoreMemo.v2`
+- トレーニング記録、体重、睡眠、メニュー、種目、メモ、進行中トレーニングは外部サーバーへ送信しない
+- 外部サーバーとの同期UI、同期SDK、送受信処理は公開バンドルに含まれない
+- JSONバックアップはユーザー操作で端末上にファイルを生成し、自動送信しない
+- 広告SDK、トラッキングSDK、アクセス解析SDK、クラッシュ収集SDKは使用しない
 - HealthKit、Push通知、Apple Sign In、課金、サブスクリプションは未使用
+- CapacitorはローカルのWebアプリをiOS WebViewで実行するために使用
 
-## A. 端末内だけに保存されるデータ
-
-Firebase同期を有効にしない場合、以下は端末内のlocalStorageに保存されます。
+## 端末内で扱うデータ
 
 - Fitness: トレーニング記録、種目、重量、回数、セット、RPE、メニュー
 - Healthに該当し得るデータ: 体重、睡眠時間、就寝時刻、起床時刻
-- User Content: メモ、自作メニュー名、自作種目名、任意入力のメモ
-- Usage Dataに近い内部状態: 選択中ルート、進行中トレーニング、開始日時、最終更新日時
-- Settings: テーマ、休憩タイマー、Firebase設定、バックアップ日時
-
-AppleのApp Privacyでは、端末内だけで処理され、開発者や第三者がアクセスできないデータは「収集」とは別扱いになる可能性があります。ただし最終申告では、Appleの定義に沿って確認してください。
-
-## B. Firebaseを有効にした場合に外部へ送信されるデータ
-
-ユーザーがFirebase同期を有効にした場合、以下のデータがユーザー指定のFirestoreへ送信されます。
-
-- Fitness: トレーニング記録、種目、メニュー、セット内容
-- Healthに該当し得るデータ: 体重、睡眠
 - User Content: メモ、自作メニュー名、自作種目名
-- Settings: Firebase設定を含むアプリ設定
-- Usage Dataに近い内部状態: 進行中トレーニング、選択中画面、開始日時、更新日時
+- アプリ内部状態: 選択中画面、進行中トレーニング、開始日時、最終更新日時
+- Settings: テーマ、休憩タイマー、バックアップ日時
 
-利用目的はApp Functionalityです。広告、第三者広告、トラッキング目的では使用しません。
+これらは端末内だけで処理され、開発者または第三者がアクセス可能なサーバーへ送信されません。Appleの定義では、端末内だけで処理されるデータはApp Privacy上の「収集」には該当しません。
 
-## C. アプリが収集していないデータ
+## App Store Connect回答案
 
-現在のコードでは、以下の収集は確認できません。
+初回リリースの実装がこの文書どおりであることを最終確認したうえで、データ収集の質問は「いいえ、このAppからデータを収集しません」を候補とします。
 
-- Contact Info: 氏名、メールアドレス、電話番号、住所
-- Location: 位置情報
-- Contacts: 連絡先
-- Photos / Videos / Audio: 写真、動画、音声
-- Purchases: 購入履歴
-- Advertising Data: 広告データ
-- Diagnostics: 独自のクラッシュログ、診断ログ
-- Device ID: IDFAなど広告識別子
-- Browsing History: アプリ外Web閲覧履歴
+- Data Linked to You: 該当なし
+- Data Not Linked to You: 該当なし
+- Tracking: なし
 
-## App Store Connectで検討すべき項目
-
-Firebase同期を提供する場合は、少なくとも以下を申告候補として確認してください。
-
-- Fitness: トレーニング記録
-- Health: 体重、睡眠
-- User Content: メモ、自作メニュー、自作種目
-- Usage Data: 進行中状態や画面状態を同期対象に含めるかどうか
-
-「Data Linked to You」は、FirebaseプロジェクトやFirestoreパス、アカウント運用によって判断が変わります。現在のアプリ自体にはログイン機能はありません。
-
-「Tracking」は、現在のコードでは確認できません。
+Web/PWA版の静的ファイル配信に伴う一般的なホスティングアクセスログは、アプリが入力データを送信する処理とは別です。公開時のVercel等のホスティング設定で独自のアクセス解析を有効にした場合は、別途申告内容を再確認してください。
 
 ## 第三者SDK
 
 - Capacitor Core / iOS: ネイティブWebView実行基盤
-- Firebase Web SDK: Firebase同期が有効な場合のみ、Google CDNから動的import
 
-広告SDK、分析SDK、SNS SDKは確認できません。
+外部同期、広告、分析、SNS、クラッシュ収集SDKは公開版に含まれません。
 
 ## 参考
 

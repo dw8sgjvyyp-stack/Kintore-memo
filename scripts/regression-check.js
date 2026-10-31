@@ -71,6 +71,21 @@ assert(app.includes("activeWorkoutSession"), "active workout session support is 
 assert(app.includes("recordDrafts[ex.sessionExerciseId]"), "record drafts remain keyed by session exercise id");
 assert(app.includes("sets,"), "saved workout objects keep a sets field");
 assert(app.includes("draftSetsToSavedSets"), "workout sets are still normalized before save");
+assert(app.includes('localStorage.getItem(STORAGE_KEY)') && app.includes('localStorage.setItem(STORAGE_KEY, JSON.stringify(state))'), "app state remains persisted and restored through the existing localStorage key");
+assert(app.includes('firebaseConfig: ""') && app.includes("firebaseEnabled: false"), "legacy Firebase settings remain readable for future-compatible state migration");
+assert(!app.includes("www.gstatic.com/firebasejs") && !app.includes("firebase-firestore") && !app.includes("syncFirebase") && !app.includes("getFirebase"), "public bundle contains no Firebase SDK loading or sync path");
+assert(!app.includes('data-action="firebase-pull"') && !app.includes("Firebase設定JSON") && !app.includes("Firestoreドキュメントパス"), "public settings UI exposes no Firebase controls");
+assert(!app.includes("setDoc(") && !app.includes("getDoc("), "public bundle contains no external document upload or download calls");
+
+const localPersistenceFixture = {
+  version: 2,
+  workouts: [{ id: "workout-1", date: "2026-10-30", exerciseName: "テスト種目", sets: [{ weight: 50, reps: 8, rpe: 8 }], memo: "保存確認" }],
+  metrics: [{ date: "2026-10-30", weight: "65.0", sleepHours: "7.5" }],
+  activeWorkoutSession: { sessionId: "active-1", recordDrafts: { session_1: { sets: [{ weight: 55, reps: 8 }] } } }
+};
+const restartedLocalState = JSON.parse(JSON.stringify(localPersistenceFixture));
+assert(restartedLocalState.workouts[0].sets[0].weight === 50 && restartedLocalState.workouts[0].memo === "保存確認", "saved workout survives a localStorage-compatible restart round trip");
+assert(restartedLocalState.metrics[0].weight === "65.0" && restartedLocalState.activeWorkoutSession.sessionId === "active-1", "metrics and resumable session survive a localStorage-compatible restart round trip");
 assert(app.includes('data-action="open-create-routine"'), "home and menu management expose routine creation");
 assert(app.includes('data-action="save-current-as-routine"'), "today-only workouts can optionally be saved as routines");
 assert(app.includes('data-action="save-completed-as-routine"'), "completed workouts can optionally be saved as routines");
